@@ -13,6 +13,10 @@ def progress_bar():
     
     
 def progress_bar2():
+    """
+    实现进度条功能函数
+    :return:
+    """
     length = 100  # 定义长度变量
     for i in range(1, length + 1):  # 循环遍历1~100中的数
         percentage = i / length  # 求进度条的百分比
