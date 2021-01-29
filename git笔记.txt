@@ -75,7 +75,7 @@ $ git push origin master
 
 从远程库克隆：
 登陆GitHub，创建一个新的仓库，名字叫 gitskills
-$ git clone git@github.com:michaelliao/gitskills.git
+$ git clone git@github.com:newwanghan/spase01.git
 
 分支管理：
 创建 dev 分支，然后切换到 dev 分支：
