@@ -1,0 +1,9 @@
+adb shell /system/bin/uiautomator dump --compressed /data/local/tmp/uidump.xml
+adb pull /data/local/tmp/uidump.xml C:/Users/Administrator/Desktop
+
+pip install --upgrade -i https://pypi.tuna.tsinghua.edu.cn/simple pip
+
+
+下载chromedriver驱动：
+驱动下载地址1：http://npm.taobao.org/mirrors/chromedriver/ 
+驱动下载地址2：http://chromedriver.storage.googleapis.com/index.html 
