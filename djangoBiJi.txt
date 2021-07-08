@@ -1,0 +1,77 @@
+#####一对多
+部门1 = 部门类.objects.get(id=1)  # 查询到id=1的部门
+部门1.员工类_set.all()   # 查询部门1里面所有的员工
+
+员工1 = 员工类.objects.get(pk=1)  3 查询到id=1的员工
+员工1.外键    # 查询员工所属的部门
+
+# 创建了员工小红，指定她在部门1
+员工类.objects.create(name='小红', age=18, sex=0, address='深圳',department=部门1)
+
+
+
+#####多对多
+a1 = 作者类.objects.get(pk=1)  # 查询到了一名作者
+a1.book_set.all()  # 查询这名作者写了哪些书
+
+b1 = 图书类.objects.get(pk=1)  # 查询到了一本书
+b1.authors.all()  #  查询这本书所有的作者
+
+
+a1 = 作者类.objects.get(pk=1)
+a2 = 作者类.objects.get(pk=2)
+b1 = 图书类.objects.get(pk=6)
+b1.authors.add(a1,a2)  # 添加关联关系
+
+django 过滤查询
+1.get:
+book = BookInfo.objects.get(id=100)   #查数据库模型BookInfo中id为100的数据
+
+2.all:
+book = BookInfo.objects.all()   #查数据库模型BookInfo中所有数据
+
+3.count:
+book = BookInfo.objects.all().count()  #查数据库模型BookInfo中所有数据的总数
+book = BookInfo.objects.count()  #查数据库模型BookInfo中所有数据的总数
+
+4.filter:
+4.1. book = BookInfo.objects.filter(id=1)   #查数据库模型BookInfo中id为1数据，查询到的是一个列表
+4.2. book = BookInfo.objects.filter(id__exact=1)  #查数据库模型BookInfo中id为1数据，查询到的是一个列表,
+　　　　　　　　　　　　　　　　　　　  #exact为精确值,id=1为id__exact=1的常用简写形式
+
+4.3. book = BookInfo.objects.filter(name__contains="湖")    #查数据库模型BookInfo中name内容中包含“湖”的数据，查询到的是一个列表,
+　　　　　　　　　　　　　　　　　　　 　　　　　　         #contains为包含内容
+
+4.4. book = BookInfo.objects.filter(name__endswith="湖")   #查数据库模型BookInfo中name内容中以“湖”结尾的数据，查询到的是一个列表,
+　　　　　　　　　　　　　　　　　　　 　　　　　　 　　  #endswith为以什么结尾
+
+4.5. book = BookInfo.objects.filter(name__isnull=True)   #查数据库模型BookInfo中name内容为空的数据，查询到的是一个列表,
+　　　　　　　　　　　　　　　　　　　 　　　　　　　#isnull=True表示是空为真
+
+4.6. book = BookInfo.objects.filter(id__in=[1,3,5]) #查数据库模型BookInfo中id内容为1或3或5的数据，查询到的是一个列表,
+　　　　　　　　　　　　　　　　　　　 　　　　#in表示在什么中
+
+4.7. book = BookInfo.objects.filter(id__gt=3) 　#查数据库模型BookInfo中id内容大于3的数据，查询到的是一个列表,
+　　　　　　　　　　　　　　　　　　　 　　　#gt表示大于，great 的缩写
+
+4.8. book = BookInfo.objects.filter(id__gte=3)  #查数据库模型BookInfo中id内容大于等于3的数据，查询到的是一个列表,
+　　　　　　　　　　　　　　　　　　　 　　　#gte表示大于等于，great equal 的缩写
+
+4.9. book = BookInfo.objects.filter(id__lt=3) 　#查数据库模型BookInfo中id内容小于3的数据，查询到的是一个列表,
+　　　　　　　　　　　　　　　　　　　 　　　#lt表示小于，less than 的缩写
+
+4.10. book = BookInfo.objects.filter(id__lte=3) #查数据库模型BookInfo中id内容小于等于3的数据，查询到的是一个列表,
+　　　　　　　　　　　　　　　　　　　 　　　#lte表示小于等于，less than equal 的缩写
+
+4.11. book = BookInfo.objects.filter(pub_date__year='1980') 　#查数据库模型BookInfo中pub_date内容中年份为“1980”年的数据，查询到的是一个列表,
+　　　　　　　　　　　　　　　　　　　 　　　　　　　　　　#year表示日期中的年
+
+4.12. book = BookInfo.objects.filter(pub_date__gt='1990-1-1')  #查数据库模型BookInfo中pub_date内容中等于“1990”年“1”月"1"日的数据，查询到的是一个列　　　　　　　　　　　　                                                                                                                      #表，年月日之间必须以“-”隔开的形式，django要求，否则会报错
+
+5.exclude:
+5.1. book = BookInfo.objects.exclude(id=1)   　　#查数据库模型BookInfo中id不为1(即抛去id为1的)数据，查询到的是一个列表
+5.2. book = BookInfo.objects.exclude(id__exact=1)   #查数据库模型BookInfo中id不为1(即抛去id为1的)数据，查询到的是一个列表,
+　　　　　　　　　　　　　　　　　　　  　　　　　  #exact为精确值,id=1为id__exact=1的常用简写形式
+
+ 
+
