@@ -130,8 +130,6 @@ $ git push origin master
 如果要推送其他分支，比如 dev ，就改成：
 $ git push origin dev
 
-test
-
 
 
 
